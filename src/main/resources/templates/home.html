@@ -13,5 +13,46 @@
         power of Spring Boot.
     </p>
 
+    <table>
+        <<thead>
+            <tr>Id</tr>
+            <tr>Name</tr>
+            <tr>Price</tr>
+        </thead>
+        <tbody>
+            <tr th:each="item in ${items}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.price}"></td>
+                <td>
+                    <form method="post" th:action="@{'/add/' + ${item.id}}">
+                        <input type="submit" value="Add to Cart" />
+                    </form>
+                </td>
+                <td>
+                    <form th:method="delete" th:action="@{'/delete/' + ${item.id}}">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </thead>
+    </table>
+
+    <h2>My Cart</h2>
+    <table>
+        <thead>
+            <tr>Id</tr>
+            <tr>Name</tr>
+            <tr>Quantity</tr>
+        </thead>
+        <tbody>
+            <tr th:each="carItem : ${cart.carItems}">
+                <td th:text="${carItem.item.id}"></td>
+                <td th:text="${carItem.item.name}"></td>
+                <td th:text="${carItem.item.quantity}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
