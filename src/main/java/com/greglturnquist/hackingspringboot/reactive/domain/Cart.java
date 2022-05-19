@@ -18,6 +18,8 @@ public class Cart {
 
     private List<CartItem> cartItems;
 
+    private Cart() {}
+
     public Cart(String id) {
         this(id, new ArrayList<>());
     }

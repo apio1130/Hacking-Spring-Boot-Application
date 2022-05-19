@@ -17,10 +17,11 @@ public class Item {
 
     private double price;
 
+    private Item() {}
+
     public Item(String name, double price) {
         this.name = name;
         this.price = price;
     }
-
 
 }
