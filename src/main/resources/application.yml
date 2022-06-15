@@ -6,3 +6,8 @@ spring:
   mongodb:
     embedded:
       version: 3.0.0
+  thymeleaf:
+    cache: false
+logging:
+  level:
+    web: DEBUG
