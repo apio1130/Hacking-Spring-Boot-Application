@@ -3,9 +3,11 @@ package com.greglturnquist.hackingspringboot.reactive.domain;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode
 public class CartItem {
 
@@ -22,6 +24,10 @@ public class CartItem {
 
     public void increment() {
         this.quantity++;
+    }
+
+    public void decrement() {
+        this.quantity--;
     }
 
 }
