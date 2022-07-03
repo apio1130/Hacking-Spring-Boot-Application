@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
@@ -38,6 +39,19 @@ class ApiItemControllerDocumentationTest {
                 .expectStatus().isOk()
                 .expectBody()
                 .consumeWith(document("findAll", preprocessResponse(prettyPrint())));
+    }
+
+    @Test
+    void postNewItem() {
+        when(repository.save(any())).thenReturn(
+                Mono.just(new Item("Alf alarm clock", "nothing important", 19.19)));
+
+        this.webTestClient.post().uri("/api/items")
+                .bodyValue(new Item("Alf alarm clock", "nothing important", 19.19))
+                .exchange()
+                .expectStatus().isCreated()
+                .expectBody()
+                .consumeWith(document("post-new-item", preprocessResponse(prettyPrint())));
     }
 
 }
