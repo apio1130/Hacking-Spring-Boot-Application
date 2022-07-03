@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-class InventoryService {
+public class InventoryService {
 
 	private final ItemRepository itemRepository;
 
