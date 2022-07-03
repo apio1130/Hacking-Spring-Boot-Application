@@ -119,7 +119,7 @@
                 <version>2.7</version>
                 <executions>
                     <execution>
-                        <id>copy-resource</id>
+                        <id>copy-resources</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
